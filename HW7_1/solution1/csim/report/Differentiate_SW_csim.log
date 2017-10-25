@@ -1,0 +1,10 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../Testbench.cpp in debug mode
+   Compiling ../../../../Compress.cpp in debug mode
+   Compiling ../../../../Differentiate.cpp in debug mode
+   Compiling ../../../../Filter.cpp in debug mode
+   Compiling ../../../../Scale.cpp in debug mode
+   Generating csim.exe
+CRITICAL WARNING: [SIM 100] 'csim_design' failed: nonzero return value.
+INFO: [SIM 3] *************** CSIM finish ***************
