@@ -4,11 +4,12 @@
 ## Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 ############################################################
 open_project HW7_1
-set_top Differentiate_HW
+set_top Filter_HW
 add_files Compress.cpp
 add_files Differentiate.cpp
 add_files Differentiate_HW.cpp
 add_files Filter.cpp
+add_files Filter_HW.cpp
 add_files Scale.cpp
 add_files -tb Testbench.cpp
 open_solution "solution1"

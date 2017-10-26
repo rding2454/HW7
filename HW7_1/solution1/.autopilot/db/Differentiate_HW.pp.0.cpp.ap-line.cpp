@@ -213,21 +213,27 @@ void Check_error(int Error, const char * Message);
 #pragma empty_line
 void Scale_SW(const unsigned char * Input, unsigned char * Output);
 void Filter_SW(const unsigned char * Input, unsigned char * Output);
+void Filter_HW(const unsigned char * Input, unsigned char * Output);
 void Differentiate_SW(const unsigned char * Input, unsigned char * Output);
 void Differentiate_HW(const unsigned char * Input, unsigned char * Output);
 int Compress_SW(const unsigned char * Input, unsigned char * Output);
 #pragma line 2 "Differentiate_HW.cpp" 2
 #pragma empty_line
-void Differentiate_HW(const unsigned char Input[((960) * (540))], unsigned char Output[((((960) / 2) - ((7) - 1)) * (((540) / 2) - ((7) - 1)))])
-{
- unsigned char buffer[(((960) / 2) - ((7) - 1))];
- unsigned char win_ymx, win_yxm, win_new = 0;
- for (int Y = 0; Y < (((540) / 2) - ((7) - 1)); Y++)
+#pragma SDS data access_pattern(Input:SEQUENTIAL)
+#pragma SDS data access_pattern(Output:SEQUENTIAL)
 #pragma empty_line
-#pragma HLS PIPELINE
-for (int X = 0; X < (((960) / 2) - ((7) - 1)); X++)
+#pragma SDS data zero_copy(Input[0:FRAMES * INPUT_FRAME_SIZE],Output[0:FRAMES * INPUT_FRAME_SIZE])
+void Differentiate_HW(const unsigned char Input[(10) * ((960) * (540))], unsigned char Output[(10) * ((960) * (540))])
+{
+ unsigned char buffer[((((960) / 2) - ((7) - 1)) * (((540) / 2) - ((7) - 1)))];
+ unsigned char win_ymx, win_yxm, win_new;
+ win_new = Input[0];
+#pragma empty_line
+ for (int Y = 0; Y < (((540) / 2) - ((7) - 1)); Y++)
+  for (int X = 0; X < (((960) / 2) - ((7) - 1)); X++)
   {
-   int Average = 0;
+#pragma HLS PIPELINE
+ int Average = 0;
    if (Y > 0 && X > 0)
    {
     win_yxm = win_new; win_new = Input[(((960) / 2) - ((7) - 1)) * Y + X]; win_ymx = buffer[X];
@@ -238,7 +244,7 @@ for (int X = 0; X < (((960) / 2) - ((7) - 1)); X++)
    {
     win_yxm = win_new; win_new = Input[(((960) / 2) - ((7) - 1)) * Y + X]; win_ymx = buffer[X];
     Average = Input[(((960) / 2) - ((7) - 1)) * (Y - 1) + X];
-    buffer[(((960) / 2) - ((7) - 1)) - 1];
+    buffer[(((960) / 2) - ((7) - 1)) - 1] = win_yxm;
    }
    else if (X > 0)
    {

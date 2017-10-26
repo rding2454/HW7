@@ -19,7 +19,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../../Testbench.cpp ../../../../Compress.cpp ../../../../Differentiate.cpp ../../../../Differentiate_HW.cpp ../../../../Filter.cpp ../../../../Scale.cpp
+HLS_SOURCES = ../../../../Testbench.cpp ../../../../Compress.cpp ../../../../Differentiate.cpp ../../../../Differentiate_HW.cpp ../../../../Filter.cpp ../../../../Filter_HW.cpp ../../../../Scale.cpp
 
 TARGET := csim.exe
 
@@ -98,6 +98,12 @@ $(ObjDir)/Filter.o: ../../../../Filter.cpp $(ObjDir)/.dir
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
 -include $(ObjDir)/Filter.d
+
+$(ObjDir)/Filter_HW.o: ../../../../Filter_HW.cpp $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../../Filter_HW.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/Filter_HW.d
 
 $(ObjDir)/Scale.o: ../../../../Scale.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../Scale.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)

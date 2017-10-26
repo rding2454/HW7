@@ -8,61 +8,117 @@ Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 7ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
 INFO: [HLS 200-10] Analyzing design file 'Scale.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Filter_HW.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'Filter.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'Differentiate_HW.cpp' ... 
-WARNING: [HLS 200-40] Differentiate_HW.cpp:23:34: warning: expression result unused [-Wunused-value]
-                                buffer[OUTPUT_FRAME_WIDTH - 1];
-                                ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~^
-1 warning generated.
-
 INFO: [HLS 200-10] Analyzing design file 'Differentiate.cpp' ... 
 INFO: [HLS 200-10] Analyzing design file 'Compress.cpp' ... 
 INFO: [HLS 200-10] Validating synthesis directives ...
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 96.555 ; gain = 46.980
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 96.555 ; gain = 46.980
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 96.734 ; gain = 46.445
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 96.734 ; gain = 46.445
 INFO: [HLS 200-10] Starting code transformations ...
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 98.594 ; gain = 49.020
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 98.762 ; gain = 48.473
 INFO: [HLS 200-10] Checking synthesizability ...
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 98.813 ; gain = 49.238
-INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-1' (Differentiate_HW.cpp:7) in function 'Differentiate_HW' for pipelining.
-INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1' (Differentiate_HW.cpp:10) in function 'Differentiate_HW' completely.
-INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Differentiate_HW.cpp:10:2) to (Differentiate_HW.cpp:13:4) in function 'Differentiate_HW'... converting 3 basic blocks.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:32 ; elapsed = 00:00:41 . Memory (MB): peak = 225.203 ; gain = 175.629
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:01:25 ; elapsed = 00:01:33 . Memory (MB): peak = 374.078 ; gain = 324.504
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 98.762 ; gain = 48.473
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-1.1' (Filter_HW.cpp:37) in function 'Filter_vertical' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'Loop-1.1' (Filter_HW.cpp:11) in function 'Filter_horizontal_HW' for pipelining.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1.1' (Filter_HW.cpp:42) in function 'Filter_vertical' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1.2' (Filter_HW.cpp:50) in function 'Filter_vertical' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1.1' (Filter_HW.cpp:16) in function 'Filter_horizontal_HW' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1.2' (Filter_HW.cpp:24) in function 'Filter_horizontal_HW' completely.
+INFO: [XFORM 203-11] Balancing expressions in function 'Filter_vertical' (Filter_HW.cpp:31)...12 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'Filter_horizontal_HW' (Filter_HW.cpp:5)...12 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 119.680 ; gain = 69.391
+INFO: [XFORM 203-541] Flattening a loop nest 'Loop-1' (Filter_HW.cpp:36:7) in function 'Filter_vertical'.
+INFO: [XFORM 203-541] Flattening a loop nest 'Loop-1' (Filter_HW.cpp:10:7) in function 'Filter_horizontal_HW'.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 132.031 ; gain = 81.742
 INFO: [HLS 200-10] Starting hardware synthesis ...
-INFO: [HLS 200-10] Synthesizing 'Differentiate_HW' ...
-WARNING: [SYN 201-107] Renaming port name 'Differentiate_HW/Input' to 'Differentiate_HW/Input_r' to avoid the conflict with HDL keywords or other object names.
-WARNING: [SYN 201-107] Renaming port name 'Differentiate_HW/Output' to 'Differentiate_HW/Output_r' to avoid the conflict with HDL keywords or other object names.
+INFO: [HLS 200-10] Synthesizing 'Filter_HW' ...
+WARNING: [SYN 201-107] Renaming port name 'Filter_HW/Input' to 'Filter_HW/Input_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'Filter_HW/Output' to 'Filter_HW/Output_r' to avoid the conflict with HDL keywords or other object names.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'Differentiate_HW' 
+INFO: [HLS 200-42] -- Implementing module 'Filter_horizontal_HW' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
-WARNING: [SCHED 204-68] Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
-   between 'store' operation (Differentiate_HW.cpp:17) of variable 'win_new_4_1', Differentiate_HW.cpp:15 on array 'buffer', Differentiate_HW.cpp:5 and 'load' operation ('buffer_load', Differentiate_HW.cpp:15) on array 'buffer', Differentiate_HW.cpp:5.
-WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('Input_load_7', Differentiate_HW.cpp:15) on array 'Input_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'Input_r'.
-WARNING: [SCHED 204-69] Unable to schedule 'store' operation (Differentiate_HW.cpp:17) of variable 'Input_load_14', Differentiate_HW.cpp:15 on array 'buffer', Differentiate_HW.cpp:5 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'buffer'.
-INFO: [SCHED 204-61] Unable to satisfy pipeline directive: Unable to pipeline the region.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('Input_load_10', Filter_HW.cpp:18) on array 'Input_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'Input_r'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 4, Depth: 11.
+WARNING: [SCHED 204-21] Estimated clock period (6.38ns) exceeds the target (target clock period: 7ns, clock uncertainty: 0.875ns, effective delay budget: 6.13ns).
+WARNING: [SCHED 204-21] The critical path consists of the following:
+	'mul' operation ('tmp_21_3', Filter_HW.cpp:19) (3.36 ns)
+	'add' operation ('tmp9', Filter_HW.cpp:19) (3.02 ns)
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 326.436 seconds; current allocated memory: 559.548 MB.
+INFO: [HLS 200-111]  Elapsed time: 11.293 seconds; current allocated memory: 94.594 MB.
 INFO: [BIND 205-100] Starting micro-architecture generation ...
 INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 16.215 seconds; current allocated memory: 598.314 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.169 seconds; current allocated memory: 95.192 MB.
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'Differentiate_HW' 
+INFO: [HLS 200-42] -- Implementing module 'Filter_vertical' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [RTGEN 206-500] Setting interface mode on port 'Differentiate_HW/Input_r' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'Differentiate_HW/Output_r' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on function 'Differentiate_HW' to 'ap_ctrl_hs'.
-INFO: [SYN 201-210] Renamed object name 'Differentiate_HW_buffer' to 'Differentiate_HW_bkb' due to the length limit 20
-INFO: [RTGEN 206-100] Finished creating RTL model for 'Differentiate_HW'.
-INFO: [HLS 200-111]  Elapsed time: 14.679 seconds; current allocated memory: 678.433 MB.
-INFO: [RTMG 210-278] Implementing memory 'Differentiate_HW_bkb_ram (RAM)' using block RAMs.
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:06:02 ; elapsed = 00:06:17 . Memory (MB): peak = 933.613 ; gain = 884.039
-INFO: [SYSC 207-301] Generating SystemC RTL for Differentiate_HW.
-INFO: [VHDL 208-304] Generating VHDL RTL for Differentiate_HW.
-INFO: [VLOG 209-307] Generating Verilog RTL for Differentiate_HW.
-INFO: [HLS 200-112] Total elapsed time: 377.154 seconds; peak allocated memory: 678.433 MB.
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('Input_load_4', Filter_HW.cpp:44) on array 'Input_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'Input_r'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 6, Depth: 9.
+WARNING: [SCHED 204-21] Estimated clock period (6.38ns) exceeds the target (target clock period: 7ns, clock uncertainty: 0.875ns, effective delay budget: 6.13ns).
+WARNING: [SCHED 204-21] The critical path consists of the following:
+	'mul' operation ('tmp_1_cast', Filter_HW.cpp:49) (3.36 ns)
+	'add' operation ('sum2', Filter_HW.cpp:36) (3.02 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.295 seconds; current allocated memory: 95.773 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.156 seconds; current allocated memory: 96.297 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Filter_HW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.116 seconds; current allocated memory: 96.375 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.171 seconds; current allocated memory: 96.451 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Filter_horizontal_HW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'Filter_horizontal_HW_buffer' to 'Filter_horizontalbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'Filter_HW_mac_muladd_8ns_8ns_15s_16_1' to 'Filter_HW_mac_mulcud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'Filter_HW_mac_mulcud': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Filter_horizontal_HW'.
+INFO: [HLS 200-111]  Elapsed time: 0.19 seconds; current allocated memory: 97.675 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Filter_vertical' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'Filter_vertical_buffer' to 'Filter_vertical_bdEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'Filter_HW_mac_muladd_9ns_10ns_12ns_17_1' to 'Filter_HW_mac_muleOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'Filter_HW_mac_muladd_9ns_10ns_9ns_17_1' to 'Filter_HW_mac_mulfYi' due to the length limit 20
+WARNING: [RTGEN 206-101] RTL name 'Filter_HW_mac_mulcud' is changed to 'Filter_HW_mac_mulcud_x' due to conflict.
+INFO: [RTGEN 206-100] Generating core module 'Filter_HW_mac_mulcud': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'Filter_HW_mac_muleOg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'Filter_HW_mac_mulfYi': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Filter_vertical'.
+INFO: [HLS 200-111]  Elapsed time: 0.446 seconds; current allocated memory: 99.120 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Filter_HW' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'Filter_HW/Input_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'Filter_HW/Output_r' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'Filter_HW' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Filter_HW'.
+INFO: [HLS 200-111]  Elapsed time: 0.444 seconds; current allocated memory: 99.526 MB.
+INFO: [RTMG 210-278] Implementing memory 'Filter_horizontalbkb_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'Filter_vertical_bdEe_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'Filter_HW_Temp_ram (RAM)' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:03 ; elapsed = 00:00:14 . Memory (MB): peak = 147.074 ; gain = 96.785
+INFO: [SYSC 207-301] Generating SystemC RTL for Filter_HW.
+INFO: [VHDL 208-304] Generating VHDL RTL for Filter_HW.
+INFO: [VLOG 209-307] Generating Verilog RTL for Filter_HW.
+INFO: [HLS 200-112] Total elapsed time: 14.382 seconds; peak allocated memory: 99.526 MB.

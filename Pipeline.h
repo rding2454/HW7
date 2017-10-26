@@ -18,7 +18,7 @@
 
 #define FRAMES (10)
 
-#define STAGES (4)
+#define STAGES (5)
 
 #define MAX_OUTPUT_SIZE (500 * 1024)
 
@@ -29,6 +29,7 @@ void Check_error(int Error, const char * Message);
 
 void Scale_SW(const unsigned char * Input, unsigned char * Output);
 void Filter_SW(const unsigned char * Input, unsigned char * Output);
+void Filter_HW(const unsigned char * Input, unsigned char * Output);
 void Differentiate_SW(const unsigned char * Input, unsigned char * Output);
 void Differentiate_HW(const unsigned char * Input, unsigned char * Output);
 int Compress_SW(const unsigned char * Input, unsigned char * Output);

@@ -1,5 +1,5 @@
 
-set TopModule "Differentiate_HW"
+set TopModule "Filter_HW"
 set ClockPeriod "7.000000"
 set ClockList {ap_clk}
 set multiClockList {}
@@ -14,7 +14,7 @@ set FftOrFirFlag 0
 set NbRWValue 0
 set intNbAccess 0
 set NewDSPMapping 1
-set HasDSPModule 0
+set HasDSPModule 1
 set ResetLevelFlag 1
 set ResetStyle "control"
 set ResetSyncFlag 1
@@ -41,8 +41,8 @@ set SCTraceFileName "mytrace"
 set SCTraceFileFormat "vcd"
 set SCTraceOption "all"
 set TargetInfo "xc7z020:clg484:-1"
-set SourceFiles {sc {} c {../../Scale.cpp ../../Filter.cpp ../../Differentiate_HW.cpp ../../Differentiate.cpp ../../Compress.cpp}}
-set SourceFlags {sc {} c {{} {} {} {} {}}}
+set SourceFiles {sc {} c {../../Scale.cpp ../../Filter_HW.cpp ../../Filter.cpp ../../Differentiate_HW.cpp ../../Differentiate.cpp ../../Compress.cpp}}
+set SourceFlags {sc {} c {{} {} {} {} {} {}}}
 set DirectiveFile {D:/ESE532/Vivado_HLS/HW7/HW7_1/solution1/solution1.directive}
 set TBFiles {verilog ../../Testbench.cpp bc ../../Testbench.cpp vhdl ../../Testbench.cpp sc ../../Testbench.cpp cas ../../Testbench.cpp c {}}
 set SpecLanguage "C"

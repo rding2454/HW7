@@ -67,6 +67,11 @@
 			<location>D:/ESE532/Vivado_HLS/HW7/Filter.cpp</location>
 		</link>
 		<link>
+			<name>source/Filter_HW.cpp</name>
+			<type>1</type>
+			<location>D:/ESE532/Vivado_HLS/HW7/Filter_HW.cpp</location>
+		</link>
+		<link>
 			<name>source/Scale.cpp</name>
 			<type>1</type>
 			<location>D:/ESE532/Vivado_HLS/HW7/Scale.cpp</location>

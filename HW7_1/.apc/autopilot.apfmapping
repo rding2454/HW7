@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="Compress.cpp" path="D:\ESE532\Vivado_HLS\HW7\Compress.cpp"/>
-    <originFiles name="Differentiate.cpp" path="D:\ESE532\Vivado_HLS\HW7\Differentiate.cpp"/>
-    <originFiles name="Filter.cpp" path="D:\ESE532\Vivado_HLS\HW7\Filter.cpp"/>
     <originFiles name="Scale.cpp" path="D:\ESE532\Vivado_HLS\HW7\Scale.cpp"/>
+    <originFiles name="Filter.cpp" path="D:\ESE532\Vivado_HLS\HW7\Filter.cpp"/>
     <originFiles name="Differentiate_HW.cpp" path="D:\ESE532\Vivado_HLS\HW7\Differentiate_HW.cpp"/>
+    <originFiles name="Differentiate.cpp" path="D:\ESE532\Vivado_HLS\HW7\Differentiate.cpp"/>
+    <originFiles name="Compress.cpp" path="D:\ESE532\Vivado_HLS\HW7\Compress.cpp"/>
+    <originFiles name="Filter_HW.cpp" path="D:\ESE532\Vivado_HLS\HW7\Filter_HW.cpp"/>
   </source>
   <testbench>
     <originFiles name="Testbench.cpp" path="D:\ESE532\Vivado_HLS\HW7\Testbench.cpp"/>

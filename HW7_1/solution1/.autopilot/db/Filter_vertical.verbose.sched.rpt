@@ -1,0 +1,799 @@
+
+
+================================================================
+== Vivado HLS Report for 'Filter_vertical'
+================================================================
+* Date:           Thu Oct 26 01:27:23 2017
+
+* Version:        2017.1 (Build 1846317 on Thu Jun 22 18:17:09 MDT 2017)
+* Project:        HW7_1
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   7.00|      6.38|        0.88|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +--------+--------+--------+--------+---------+
+    |     Latency     |     Interval    | Pipeline|
+    |   min  |   max  |   min  |   max  |   Type  |
+    +--------+--------+--------+--------+---------+
+    |  750820|  750820|  750820|  750820|   none  |
+    +--------+--------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+        |          |     Latency     | Iteration|  Initiation Interval  |  Trip  |          |
+        | Loop Name|   min  |   max  |  Latency |  achieved |   target  |  Count | Pipelined|
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+        |- Loop 1  |  750818|  750818|         9|          6|          1|  125136|    yes   |
+        +----------+--------+--------+----------+-----------+-----------+--------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 6, depth = 9
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 11
+* Pipeline: 1
+  Pipeline-0: II = 6, D = 9, States = { 2 3 4 5 6 7 8 9 10 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	11  / (exitcond_flatten)
+	3  / (!exitcond_flatten)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	2  / true
+11 --> 
+* FSM state operations: 
+
+ <State 1>: 1.77ns
+ST_1: buffer (3)  [1/1] 0.00ns  loc: Filter_HW.cpp:35
+:0  %buffer = alloca [270 x i8], align 1
+
+ST_1: buffer_addr_1 (4)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:1  %buffer_addr_1 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 0
+
+ST_1: buffer_addr_2 (5)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:2  %buffer_addr_2 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 1
+
+ST_1: buffer_addr_3 (6)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:3  %buffer_addr_3 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 2
+
+ST_1: buffer_addr_4 (7)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:4  %buffer_addr_4 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 3
+
+ST_1: buffer_addr_5 (8)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:5  %buffer_addr_5 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 4
+
+ST_1: buffer_addr_6 (9)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:6  %buffer_addr_6 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 5
+
+ST_1: buffer_addr_7 (10)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+:7  %buffer_addr_7 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 6
+
+ST_1: StgValue_20 (11)  [1/1] 1.77ns  loc: Filter_HW.cpp:36
+:8  br label %.preheader5
+
+
+ <State 2>: 3.31ns
+ST_2: indvar_flatten (13)  [1/1] 0.00ns
+.preheader5:0  %indvar_flatten = phi i17 [ 0, %0 ], [ %indvar_flatten_next, %.loopexit ]
+
+ST_2: X (14)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5:1  %X = phi i9 [ 0, %0 ], [ %X_cast1_mid2_v, %.loopexit ]
+
+ST_2: Y (15)  [1/1] 0.00ns
+.preheader5:2  %Y = phi i9 [ 0, %0 ], [ %Y_1, %.loopexit ]
+
+ST_2: exitcond_flatten (16)  [1/1] 2.43ns
+.preheader5:3  %exitcond_flatten = icmp eq i17 %indvar_flatten, -5936
+
+ST_2: indvar_flatten_next (17)  [1/1] 2.11ns
+.preheader5:4  %indvar_flatten_next = add i17 %indvar_flatten, 1
+
+ST_2: StgValue_26 (18)  [1/1] 0.00ns
+.preheader5:5  br i1 %exitcond_flatten, label %1, label %.preheader5.preheader
+
+ST_2: exitcond (21)  [1/1] 1.66ns  loc: Filter_HW.cpp:37
+.preheader5.preheader:1  %exitcond = icmp eq i9 %Y, -248
+
+ST_2: Y_mid2 (22)  [1/1] 1.37ns  loc: Filter_HW.cpp:37
+.preheader5.preheader:2  %Y_mid2 = select i1 %exitcond, i9 0, i9 %Y
+
+ST_2: X_s (23)  [1/1] 1.94ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:3  %X_s = add i9 %X, 1
+
+ST_2: X_cast1_mid2_v (24)  [1/1] 1.37ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:4  %X_cast1_mid2_v = select i1 %exitcond, i9 %X_s, i9 %X
+
+
+ <State 3>: 6.38ns
+ST_3: sum_2_cast_mid2_v_v (30)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:10  %sum_2_cast_mid2_v_v = zext i9 %X_cast1_mid2_v to i11
+
+ST_3: sum_3_cast_mid2_v (33)  [1/1] 1.98ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:13  %sum_3_cast_mid2_v = add i11 %sum_2_cast_mid2_v_v, -626
+
+ST_3: sum_3_cast_mid2 (34)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:14  %sum_3_cast_mid2 = zext i11 %sum_3_cast_mid2_v to i32
+
+ST_3: sum_4_cast_mid2_v_v (35)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:15  %sum_4_cast_mid2_v_v = zext i9 %X_cast1_mid2_v to i12
+
+ST_3: sum_4_cast_mid2_v (36)  [1/1] 2.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:16  %sum_4_cast_mid2_v = add i12 %sum_4_cast_mid2_v_v, 1896
+
+ST_3: sum_4_cast_mid2 (37)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:17  %sum_4_cast_mid2 = zext i12 %sum_4_cast_mid2_v to i32
+
+ST_3: sum_6_cast1_mid2_v (40)  [1/1] 2.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:20  %sum_6_cast1_mid2_v = add i12 %sum_4_cast_mid2_v_v, -1252
+
+ST_3: sum_6_cast1_mid2 (41)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:21  %sum_6_cast1_mid2 = zext i12 %sum_6_cast1_mid2_v to i17
+
+ST_3: tmp (46)  [1/1] 1.66ns  loc: Filter_HW.cpp:41
+.preheader5.preheader:26  %tmp = icmp eq i9 %Y_mid2, 0
+
+ST_3: StgValue_40 (47)  [1/1] 0.00ns  loc: Filter_HW.cpp:41
+.preheader5.preheader:27  br i1 %tmp, label %.preheader.0, label %.loopexit.loopexit
+
+ST_3: tmp_s (49)  [1/1] 0.00ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:0  %tmp_s = zext i9 %Y_mid2 to i17
+
+ST_3: tmp_1_cast (50)  [1/1] 3.36ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:1  %tmp_1_cast = mul i17 %tmp_s, 474
+
+ST_3: sum2 (51)  [1/1] 3.02ns  loc: Filter_HW.cpp:36
+.loopexit.loopexit:2  %sum2 = add i17 %sum_6_cast1_mid2, %tmp_1_cast
+
+ST_3: tmp_3 (82)  [1/1] 1.94ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:33  %tmp_3 = add i9 %Y_mid2, 3
+
+ST_3: tmp_3_cast (83)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:34  %tmp_3_cast = zext i9 %tmp_3 to i32
+
+ST_3: buffer_addr_11 (84)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:35  %buffer_addr_11 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_3_cast
+
+ST_3: buffer_load_3 (85)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:36  %buffer_load_3 = load i8* %buffer_addr_11, align 1
+
+ST_3: tmp_4_23 (88)  [1/1] 1.94ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:39  %tmp_4_23 = add i9 %Y_mid2, 4
+
+ST_3: tmp_4_cast_24 (89)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:40  %tmp_4_cast_24 = zext i9 %tmp_4_23 to i32
+
+ST_3: buffer_addr_12 (90)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:41  %buffer_addr_12 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_4_cast_24
+
+ST_3: buffer_load_4 (91)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:42  %buffer_load_4 = load i8* %buffer_addr_12, align 1
+
+ST_3: Input_addr_3 (140)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:22  %Input_addr_3 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_3_cast_mid2
+
+ST_3: Input_load_4 (141)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:23  %Input_load_4 = load i8* %Input_addr_3, align 1
+
+ST_3: Input_addr_4 (145)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:27  %Input_addr_4 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_4_cast_mid2
+
+ST_3: Input_load_5 (146)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:28  %Input_load_5 = load i8* %Input_addr_4, align 1
+
+
+ <State 4>: 6.38ns
+ST_4: X_cast1_mid2 (25)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:5  %X_cast1_mid2 = zext i9 %X_cast1_mid2_v to i17
+
+ST_4: X_cast4_mid2 (26)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:6  %X_cast4_mid2 = zext i9 %X_cast1_mid2_v to i32
+
+ST_4: sum_1_cast_mid2_v_v (27)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:7  %sum_1_cast_mid2_v_v = zext i9 %X_cast1_mid2_v to i10
+
+ST_4: sum_1_cast_mid2_v (28)  [1/1] 1.96ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:8  %sum_1_cast_mid2_v = add i10 %sum_1_cast_mid2_v_v, 474
+
+ST_4: sum_1_cast_mid2 (29)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:9  %sum_1_cast_mid2 = zext i10 %sum_1_cast_mid2_v to i32
+
+ST_4: Y_cast (43)  [1/1] 0.00ns  loc: Filter_HW.cpp:37
+.preheader5.preheader:23  %Y_cast = zext i9 %Y_mid2 to i32
+
+ST_4: sum2_cast (52)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.loopexit.loopexit:3  %sum2_cast = zext i17 %sum2 to i32
+
+ST_4: Input_addr_7 (53)  [1/1] 0.00ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:4  %Input_addr_7 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum2_cast
+
+ST_4: Input_load (54)  [2/2] 3.25ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:5  %Input_load = load i8* %Input_addr_7, align 1
+
+ST_4: buffer_addr_8 (59)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:10  %buffer_addr_8 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %Y_cast
+
+ST_4: buffer_load (60)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:11  %buffer_load = load i8* %buffer_addr_8, align 1
+
+ST_4: tmp_1_21 (63)  [1/1] 1.94ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:14  %tmp_1_21 = add i9 %Y_mid2, 1
+
+ST_4: tmp_1_cast_22 (64)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:15  %tmp_1_cast_22 = zext i9 %tmp_1_21 to i32
+
+ST_4: buffer_addr_9 (65)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:16  %buffer_addr_9 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_1_cast_22
+
+ST_4: buffer_load_1 (66)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:17  %buffer_load_1 = load i8* %buffer_addr_9, align 1
+
+ST_4: buffer_load_3 (85)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:36  %buffer_load_3 = load i8* %buffer_addr_11, align 1
+
+ST_4: buffer_load_4 (91)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:42  %buffer_load_4 = load i8* %buffer_addr_12, align 1
+
+ST_4: Input_addr (118)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:0  %Input_addr = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %X_cast4_mid2
+
+ST_4: Input_load_1 (119)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:1  %Input_load_1 = load i8* %Input_addr, align 1
+
+ST_4: Input_addr_1 (123)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:5  %Input_addr_1 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_1_cast_mid2
+
+ST_4: Input_load_2 (124)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:6  %Input_load_2 = load i8* %Input_addr_1, align 1
+
+ST_4: Input_load_4 (141)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:23  %Input_load_4 = load i8* %Input_addr_3, align 1
+
+ST_4: Input_load_5 (146)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:28  %Input_load_5 = load i8* %Input_addr_4, align 1
+
+ST_4: tmp_2_26 (178)  [1/1] 0.00ns  loc: Filter_HW.cpp:53
+.loopexit:2  %tmp_2_26 = zext i9 %Y_mid2 to i17
+
+ST_4: tmp_6_cast (179)  [1/1] 3.36ns  loc: Filter_HW.cpp:53
+.loopexit:3  %tmp_6_cast = mul i17 %tmp_2_26, 474
+
+ST_4: sum5 (180)  [1/1] 3.02ns  loc: Filter_HW.cpp:53
+.loopexit:4  %sum5 = add i17 %tmp_6_cast, %X_cast1_mid2
+
+
+ <State 5>: 6.38ns
+ST_5: sum_2_cast_mid2_v (31)  [1/1] 1.98ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:11  %sum_2_cast_mid2_v = add i11 %sum_2_cast_mid2_v_v, 948
+
+ST_5: sum_2_cast_mid2 (32)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:12  %sum_2_cast_mid2 = zext i11 %sum_2_cast_mid2_v to i32
+
+ST_5: sum_5_cast_mid2_v (38)  [1/1] 2.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:18  %sum_5_cast_mid2_v = add i12 %sum_4_cast_mid2_v_v, -1726
+
+ST_5: sum_5_cast_mid2 (39)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:19  %sum_5_cast_mid2 = zext i12 %sum_5_cast_mid2_v to i32
+
+ST_5: Input_load (54)  [1/2] 3.25ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:5  %Input_load = load i8* %Input_addr_7, align 1
+
+ST_5: buffer_load (60)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:11  %buffer_load = load i8* %buffer_addr_8, align 1
+
+ST_5: buffer_load_1 (66)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:17  %buffer_load_1 = load i8* %buffer_addr_9, align 1
+
+ST_5: tmp_2 (72)  [1/1] 1.94ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:23  %tmp_2 = add i9 %Y_mid2, 2
+
+ST_5: tmp_2_cast (73)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:24  %tmp_2_cast = zext i9 %tmp_2 to i32
+
+ST_5: buffer_addr_10 (74)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:25  %buffer_addr_10 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_2_cast
+
+ST_5: buffer_load_2 (75)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:26  %buffer_load_2 = load i8* %buffer_addr_10, align 1
+
+ST_5: tmp_9_3_cast (86)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:37  %tmp_9_3_cast = zext i8 %buffer_load_3 to i16
+
+ST_5: tmp_10_3 (87)  [1/1] 3.36ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:38  %tmp_10_3 = mul i16 %tmp_9_3_cast, 98
+
+ST_5: p_shl10 (92)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:43  %p_shl10 = call i14 @_ssdm_op_BitConcatenate.i14.i8.i6(i8 %buffer_load_4, i6 0)
+
+ST_5: p_shl10_cast (93)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:44  %p_shl10_cast = zext i14 %p_shl10 to i15
+
+ST_5: p_shl11 (94)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:45  %p_shl11 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %buffer_load_4, i1 false)
+
+ST_5: p_shl11_cast (95)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:46  %p_shl11_cast = zext i9 %p_shl11 to i15
+
+ST_5: tmp_10_4 (96)  [1/1] 2.04ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:47  %tmp_10_4 = sub i15 %p_shl10_cast, %p_shl11_cast
+
+ST_5: tmp_10_4_cast (97)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:48  %tmp_10_4_cast = sext i15 %tmp_10_4 to i16
+
+ST_5: tmp_5 (98)  [1/1] 1.94ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:49  %tmp_5 = add i9 %Y_mid2, 5
+
+ST_5: tmp_5_cast (99)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:50  %tmp_5_cast = zext i9 %tmp_5 to i32
+
+ST_5: buffer_addr_13 (100)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:51  %buffer_addr_13 = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_5_cast
+
+ST_5: buffer_load_5 (101)  [2/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:52  %buffer_load_5 = load i8* %buffer_addr_13, align 1
+
+ST_5: tmp4 (111)  [1/1] 3.02ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:62  %tmp4 = add i16 %tmp_10_4_cast, %tmp_10_3
+
+ST_5: Input_load_1 (119)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:1  %Input_load_1 = load i8* %Input_addr, align 1
+
+ST_5: Input_load_2 (124)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:6  %Input_load_2 = load i8* %Input_addr_1, align 1
+
+ST_5: Input_addr_2 (131)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:13  %Input_addr_2 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_2_cast_mid2
+
+ST_5: Input_load_3 (132)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:14  %Input_load_3 = load i8* %Input_addr_2, align 1
+
+ST_5: StgValue_110 (142)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:24  store i8 %Input_load_4, i8* %buffer_addr_4, align 1
+
+ST_5: tmp_7_3_cast (143)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:25  %tmp_7_3_cast = zext i8 %Input_load_4 to i16
+
+ST_5: tmp_8_3 (144)  [1/1] 3.36ns  loc: Filter_HW.cpp:45
+.preheader.0:26  %tmp_8_3 = mul i16 %tmp_7_3_cast, 98
+
+ST_5: StgValue_113 (147)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:29  store i8 %Input_load_5, i8* %buffer_addr_5, align 1
+
+ST_5: p_shl4 (148)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:30  %p_shl4 = call i14 @_ssdm_op_BitConcatenate.i14.i8.i6(i8 %Input_load_5, i6 0)
+
+ST_5: p_shl4_cast (149)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:31  %p_shl4_cast = zext i14 %p_shl4 to i15
+
+ST_5: p_shl5 (150)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:32  %p_shl5 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %Input_load_5, i1 false)
+
+ST_5: p_shl5_cast (151)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:33  %p_shl5_cast = zext i9 %p_shl5 to i15
+
+ST_5: tmp_8_4 (152)  [1/1] 2.04ns  loc: Filter_HW.cpp:45
+.preheader.0:34  %tmp_8_4 = sub i15 %p_shl4_cast, %p_shl5_cast
+
+ST_5: tmp_8_4_cast (153)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:35  %tmp_8_4_cast = sext i15 %tmp_8_4 to i16
+
+ST_5: Input_addr_5 (154)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:36  %Input_addr_5 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_5_cast_mid2
+
+ST_5: Input_load_6 (155)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:37  %Input_load_6 = load i8* %Input_addr_5, align 1
+
+ST_5: tmp9 (169)  [1/1] 3.02ns  loc: Filter_HW.cpp:45
+.preheader.0:51  %tmp9 = add i16 %tmp_8_4_cast, %tmp_8_3
+
+
+ <State 6>: 5.19ns
+ST_6: empty_27 (20)  [1/1] 0.00ns
+.preheader5.preheader:0  %empty_27 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 125136, i64 125136, i64 125136)
+
+ST_6: sum_6_cast_mid2 (42)  [1/1] 0.00ns  loc: Filter_HW.cpp:36
+.preheader5.preheader:22  %sum_6_cast_mid2 = zext i12 %sum_6_cast1_mid2_v to i32
+
+ST_6: tmp_3_28 (44)  [1/1] 0.00ns  loc: Filter_HW.cpp:38
+.preheader5.preheader:24  %tmp_3_28 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str)
+
+ST_6: StgValue_126 (45)  [1/1] 0.00ns  loc: Filter_HW.cpp:39
+.preheader5.preheader:25  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str1) nounwind
+
+ST_6: tmp_4 (55)  [1/1] 1.94ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:6  %tmp_4 = add i9 %Y_mid2, 6
+
+ST_6: tmp_4_cast (56)  [1/1] 0.00ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:7  %tmp_4_cast = zext i9 %tmp_4 to i32
+
+ST_6: buffer_addr (57)  [1/1] 0.00ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:8  %buffer_addr = getelementptr inbounds [270 x i8]* %buffer, i32 0, i32 %tmp_4_cast
+
+ST_6: StgValue_130 (58)  [1/1] 3.25ns  loc: Filter_HW.cpp:49
+.loopexit.loopexit:9  store i8 %Input_load, i8* %buffer_addr, align 1
+
+ST_6: buffer_load_2 (75)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:26  %buffer_load_2 = load i8* %buffer_addr_10, align 1
+
+ST_6: buffer_load_5 (101)  [1/2] 3.25ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:52  %buffer_load_5 = load i8* %buffer_addr_13, align 1
+
+ST_6: StgValue_133 (120)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:2  store i8 %Input_load_1, i8* %buffer_addr_1, align 1
+
+ST_6: StgValue_134 (125)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:7  store i8 %Input_load_2, i8* %buffer_addr_2, align 1
+
+ST_6: Input_load_3 (132)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:14  %Input_load_3 = load i8* %Input_addr_2, align 1
+
+ST_6: Input_load_6 (155)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:37  %Input_load_6 = load i8* %Input_addr_5, align 1
+
+ST_6: Input_addr_6 (162)  [1/1] 0.00ns  loc: Filter_HW.cpp:44
+.preheader.0:44  %Input_addr_6 = getelementptr [518400 x i8]* %Input_r, i32 0, i32 %sum_6_cast_mid2
+
+ST_6: Input_load_7 (163)  [2/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:45  %Input_load_7 = load i8* %Input_addr_6, align 1
+
+ST_6: Y_1 (185)  [1/1] 1.94ns  loc: Filter_HW.cpp:37
+.loopexit:9  %Y_1 = add i9 %Y_mid2, 1
+
+
+ <State 7>: 5.94ns
+ST_7: tmp_1 (61)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:12  %tmp_1 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %buffer_load, i1 false)
+
+ST_7: tmp_10_cast (62)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:13  %tmp_10_cast = zext i9 %tmp_1 to i16
+
+ST_7: tmp_9_1_cast1 (67)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:18  %tmp_9_1_cast1 = zext i8 %buffer_load_1 to i13
+
+ST_7: p_shl7 (68)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:19  %p_shl7 = call i12 @_ssdm_op_BitConcatenate.i12.i8.i4(i8 %buffer_load_1, i4 0)
+
+ST_7: p_shl7_cast (69)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:20  %p_shl7_cast = zext i12 %p_shl7 to i13
+
+ST_7: tmp_10_1 (70)  [1/1] 2.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:21  %tmp_10_1 = sub i13 %p_shl7_cast, %tmp_9_1_cast1
+
+ST_7: tmp_10_1_cast (71)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:22  %tmp_10_1_cast = sext i13 %tmp_10_1 to i16
+
+ST_7: p_shl8 (76)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:27  %p_shl8 = call i14 @_ssdm_op_BitConcatenate.i14.i8.i6(i8 %buffer_load_2, i6 0)
+
+ST_7: p_shl8_cast (77)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:28  %p_shl8_cast = zext i14 %p_shl8 to i15
+
+ST_7: p_shl9 (78)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:29  %p_shl9 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %buffer_load_2, i1 false)
+
+ST_7: p_shl9_cast (79)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:30  %p_shl9_cast = zext i9 %p_shl9 to i15
+
+ST_7: tmp_10_2 (80)  [1/1] 2.04ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:31  %tmp_10_2 = sub i15 %p_shl8_cast, %p_shl9_cast
+
+ST_7: tmp_10_2_cast (81)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:32  %tmp_10_2_cast = sext i15 %tmp_10_2 to i16
+
+ST_7: tmp_9_5_cast1 (102)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:53  %tmp_9_5_cast1 = zext i8 %buffer_load_5 to i13
+
+ST_7: p_shl (103)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:54  %p_shl = call i12 @_ssdm_op_BitConcatenate.i12.i8.i4(i8 %buffer_load_5, i4 0)
+
+ST_7: p_shl_cast (104)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:55  %p_shl_cast = zext i12 %p_shl to i13
+
+ST_7: tmp_10_5 (105)  [1/1] 2.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:56  %tmp_10_5 = sub i13 %p_shl_cast, %tmp_9_5_cast1
+
+ST_7: tmp_10_5_cast (106)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:57  %tmp_10_5_cast = sext i13 %tmp_10_5 to i14
+
+ST_7: tmp_10_6 (107)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:58  %tmp_10_6 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %Input_load, i1 false)
+
+ST_7: tmp_10_6_cast (108)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:59  %tmp_10_6_cast = zext i9 %tmp_10_6 to i14
+
+ST_7: tmp2 (109)  [1/1] 1.95ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:60  %tmp2 = add i16 %tmp_10_2_cast, %tmp_10_1_cast
+
+ST_7: tmp1 (110)  [1/1] 1.95ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:61  %tmp1 = add i16 %tmp_10_cast, %tmp2
+
+ST_7: tmp5 (112)  [1/1] 2.02ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:63  %tmp5 = add i14 %tmp_10_6_cast, %tmp_10_5_cast
+
+ST_7: tmp_8 (121)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:3  %tmp_8 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %Input_load_1, i1 false)
+
+ST_7: tmp_8_cast (122)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:4  %tmp_8_cast = zext i9 %tmp_8 to i16
+
+ST_7: tmp_7_1_cast1 (126)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:8  %tmp_7_1_cast1 = zext i8 %Input_load_2 to i13
+
+ST_7: p_shl1 (127)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:9  %p_shl1 = call i12 @_ssdm_op_BitConcatenate.i12.i8.i4(i8 %Input_load_2, i4 0)
+
+ST_7: p_shl1_cast (128)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:10  %p_shl1_cast = zext i12 %p_shl1 to i13
+
+ST_7: tmp_8_1 (129)  [1/1] 2.00ns  loc: Filter_HW.cpp:45
+.preheader.0:11  %tmp_8_1 = sub i13 %p_shl1_cast, %tmp_7_1_cast1
+
+ST_7: tmp_8_1_cast (130)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:12  %tmp_8_1_cast = sext i13 %tmp_8_1 to i16
+
+ST_7: StgValue_170 (133)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:15  store i8 %Input_load_3, i8* %buffer_addr_3, align 1
+
+ST_7: p_shl2 (134)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:16  %p_shl2 = call i14 @_ssdm_op_BitConcatenate.i14.i8.i6(i8 %Input_load_3, i6 0)
+
+ST_7: p_shl2_cast (135)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:17  %p_shl2_cast = zext i14 %p_shl2 to i15
+
+ST_7: p_shl3 (136)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:18  %p_shl3 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %Input_load_3, i1 false)
+
+ST_7: p_shl3_cast (137)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:19  %p_shl3_cast = zext i9 %p_shl3 to i15
+
+ST_7: tmp_8_2 (138)  [1/1] 2.04ns  loc: Filter_HW.cpp:45
+.preheader.0:20  %tmp_8_2 = sub i15 %p_shl2_cast, %p_shl3_cast
+
+ST_7: tmp_8_2_cast (139)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:21  %tmp_8_2_cast = sext i15 %tmp_8_2 to i16
+
+ST_7: StgValue_177 (156)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:38  store i8 %Input_load_6, i8* %buffer_addr_6, align 1
+
+ST_7: tmp_7_5_cast1 (157)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:39  %tmp_7_5_cast1 = zext i8 %Input_load_6 to i13
+
+ST_7: p_shl6 (158)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:40  %p_shl6 = call i12 @_ssdm_op_BitConcatenate.i12.i8.i4(i8 %Input_load_6, i4 0)
+
+ST_7: p_shl6_cast (159)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:41  %p_shl6_cast = zext i12 %p_shl6 to i13
+
+ST_7: tmp_8_5 (160)  [1/1] 2.00ns  loc: Filter_HW.cpp:45
+.preheader.0:42  %tmp_8_5 = sub i13 %p_shl6_cast, %tmp_7_5_cast1
+
+ST_7: tmp_8_5_cast (161)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:43  %tmp_8_5_cast = sext i13 %tmp_8_5 to i14
+
+ST_7: Input_load_7 (163)  [1/2] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:45  %Input_load_7 = load i8* %Input_addr_6, align 1
+
+ST_7: tmp_8_6 (165)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:47  %tmp_8_6 = call i9 @_ssdm_op_BitConcatenate.i9.i8.i1(i8 %Input_load_7, i1 false)
+
+ST_7: tmp_8_6_cast (166)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:48  %tmp_8_6_cast = zext i9 %tmp_8_6 to i14
+
+ST_7: tmp7 (167)  [1/1] 1.95ns  loc: Filter_HW.cpp:45
+.preheader.0:49  %tmp7 = add i16 %tmp_8_2_cast, %tmp_8_1_cast
+
+ST_7: tmp6 (168)  [1/1] 1.95ns  loc: Filter_HW.cpp:45
+.preheader.0:50  %tmp6 = add i16 %tmp_8_cast, %tmp7
+
+ST_7: tmp10 (170)  [1/1] 2.02ns  loc: Filter_HW.cpp:45
+.preheader.0:52  %tmp10 = add i14 %tmp_8_6_cast, %tmp_8_5_cast
+
+
+ <State 8>: 5.67ns
+ST_8: tmp5_cast (113)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:64  %tmp5_cast = sext i14 %tmp5 to i16
+
+ST_8: tmp3 (114)  [1/1] 1.95ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:65  %tmp3 = add i16 %tmp4, %tmp5_cast
+
+ST_8: Sum_4_6 (115)  [1/1] 1.95ns  loc: Filter_HW.cpp:51
+.loopexit.loopexit:66  %Sum_4_6 = add i16 %tmp1, %tmp3
+
+ST_8: StgValue_192 (116)  [1/1] 1.77ns
+.loopexit.loopexit:67  br label %.loopexit
+
+ST_8: StgValue_193 (164)  [1/1] 3.25ns  loc: Filter_HW.cpp:44
+.preheader.0:46  store i8 %Input_load_7, i8* %buffer_addr_7, align 1
+
+ST_8: tmp10_cast (171)  [1/1] 0.00ns  loc: Filter_HW.cpp:45
+.preheader.0:53  %tmp10_cast = sext i14 %tmp10 to i16
+
+ST_8: tmp8 (172)  [1/1] 1.95ns  loc: Filter_HW.cpp:45
+.preheader.0:54  %tmp8 = add i16 %tmp9, %tmp10_cast
+
+ST_8: Sum_3_6 (173)  [1/1] 1.95ns  loc: Filter_HW.cpp:45
+.preheader.0:55  %Sum_3_6 = add i16 %tmp6, %tmp8
+
+ST_8: StgValue_197 (174)  [1/1] 1.77ns
+.preheader.0:56  br label %.loopexit
+
+
+ <State 9>: 3.25ns
+ST_9: Sum_2 (176)  [1/1] 0.00ns  loc: Filter_HW.cpp:51
+.loopexit:0  %Sum_2 = phi i16 [ %Sum_4_6, %.loopexit.loopexit ], [ %Sum_3_6, %.preheader.0 ]
+
+ST_9: tmp_5_25 (177)  [1/1] 0.00ns  loc: Filter_HW.cpp:53
+.loopexit:1  %tmp_5_25 = call i8 @_ssdm_op_PartSelect.i8.i16.i32.i32(i16 %Sum_2, i32 8, i32 15)
+
+ST_9: sum5_cast (181)  [1/1] 0.00ns  loc: Filter_HW.cpp:53
+.loopexit:5  %sum5_cast = zext i17 %sum5 to i32
+
+ST_9: Output_addr (182)  [1/1] 0.00ns  loc: Filter_HW.cpp:53
+.loopexit:6  %Output_addr = getelementptr [5184000 x i8]* %Output_r, i32 0, i32 %sum5_cast
+
+ST_9: StgValue_202 (183)  [2/2] 3.25ns  loc: Filter_HW.cpp:53
+.loopexit:7  store i8 %tmp_5_25, i8* %Output_addr, align 1
+
+
+ <State 10>: 3.25ns
+ST_10: StgValue_203 (183)  [1/2] 3.25ns  loc: Filter_HW.cpp:53
+.loopexit:7  store i8 %tmp_5_25, i8* %Output_addr, align 1
+
+ST_10: empty (184)  [1/1] 0.00ns  loc: Filter_HW.cpp:54
+.loopexit:8  %empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str, i32 %tmp_3_28)
+
+ST_10: StgValue_205 (186)  [1/1] 0.00ns  loc: Filter_HW.cpp:37
+.loopexit:10  br label %.preheader5
+
+
+ <State 11>: 0.00ns
+ST_11: StgValue_206 (188)  [1/1] 0.00ns  loc: Filter_HW.cpp:55
+:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 7ns, clock uncertainty: 0.875ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('indvar_flatten') with incoming values : ('indvar_flatten_next') [13]  (1.77 ns)
+
+ <State 2>: 3.31ns
+The critical path consists of the following:
+	'phi' operation ('X', Filter_HW.cpp:36) with incoming values : ('X_cast1_mid2_v', Filter_HW.cpp:36) [14]  (0 ns)
+	'add' operation ('X_s', Filter_HW.cpp:36) [23]  (1.94 ns)
+	'select' operation ('X_cast1_mid2_v', Filter_HW.cpp:36) [24]  (1.37 ns)
+
+ <State 3>: 6.38ns
+The critical path consists of the following:
+	'mul' operation ('tmp_1_cast', Filter_HW.cpp:49) [50]  (3.36 ns)
+	'add' operation ('sum2', Filter_HW.cpp:36) [51]  (3.02 ns)
+
+ <State 4>: 6.38ns
+The critical path consists of the following:
+	'mul' operation ('tmp_6_cast', Filter_HW.cpp:53) [179]  (3.36 ns)
+	'add' operation ('sum5', Filter_HW.cpp:53) [180]  (3.02 ns)
+
+ <State 5>: 6.38ns
+The critical path consists of the following:
+	'mul' operation ('tmp_10_3', Filter_HW.cpp:51) [87]  (3.36 ns)
+	'add' operation ('tmp4', Filter_HW.cpp:51) [111]  (3.02 ns)
+
+ <State 6>: 5.19ns
+The critical path consists of the following:
+	'add' operation ('tmp_4', Filter_HW.cpp:49) [55]  (1.94 ns)
+	'getelementptr' operation ('buffer_addr', Filter_HW.cpp:49) [57]  (0 ns)
+	'store' operation (Filter_HW.cpp:49) of variable 'Input_load', Filter_HW.cpp:49 on array 'buffer', Filter_HW.cpp:35 [58]  (3.25 ns)
+
+ <State 7>: 5.94ns
+The critical path consists of the following:
+	'sub' operation ('tmp_10_2', Filter_HW.cpp:51) [80]  (2.04 ns)
+	'add' operation ('tmp2', Filter_HW.cpp:51) [109]  (1.95 ns)
+	'add' operation ('tmp1', Filter_HW.cpp:51) [110]  (1.95 ns)
+
+ <State 8>: 5.67ns
+The critical path consists of the following:
+	'add' operation ('tmp3', Filter_HW.cpp:51) [114]  (1.95 ns)
+	'add' operation ('Sum_4_6', Filter_HW.cpp:51) [115]  (1.95 ns)
+	multiplexor before 'phi' operation ('Sum_2', Filter_HW.cpp:51) with incoming values : ('Sum_4_6', Filter_HW.cpp:51) ('Sum_3_6', Filter_HW.cpp:45) [176]  (1.77 ns)
+
+ <State 9>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('Sum_2', Filter_HW.cpp:51) with incoming values : ('Sum_4_6', Filter_HW.cpp:51) ('Sum_3_6', Filter_HW.cpp:45) [176]  (0 ns)
+	'store' operation (Filter_HW.cpp:53) of variable 'tmp_5_25', Filter_HW.cpp:53 on array 'Output_r' [183]  (3.25 ns)
+
+ <State 10>: 3.25ns
+The critical path consists of the following:
+	'store' operation (Filter_HW.cpp:53) of variable 'tmp_5_25', Filter_HW.cpp:53 on array 'Output_r' [183]  (3.25 ns)
+
+ <State 11>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

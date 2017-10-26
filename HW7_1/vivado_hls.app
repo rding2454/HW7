@@ -1,4 +1,4 @@
-<project xmlns="com.autoesl.autopilot.project" name="HW7_1" top="Differentiate_HW">
+<project xmlns="com.autoesl.autopilot.project" name="HW7_1" top="Filter_HW">
     <includePaths/>
     <libraryPaths/>
     <Simulation>
@@ -7,6 +7,7 @@
     <files xmlns="">
         <file name="../../Testbench.cpp" sc="0" tb="1" cflags=" "/>
         <file name="Scale.cpp" sc="0" tb="false" cflags=""/>
+        <file name="Filter_HW.cpp" sc="0" tb="false" cflags=""/>
         <file name="Filter.cpp" sc="0" tb="false" cflags=""/>
         <file name="Differentiate_HW.cpp" sc="0" tb="false" cflags=""/>
         <file name="Differentiate.cpp" sc="0" tb="false" cflags=""/>

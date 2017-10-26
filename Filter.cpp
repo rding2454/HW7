@@ -38,4 +38,3 @@ void Filter_SW(const unsigned char * Input,
   Filter_vertical(Temp, Output);
   Free(Temp);
 }
-

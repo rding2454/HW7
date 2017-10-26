@@ -105,11 +105,8 @@ void Store_data(const char * Filename, unsigned char * Data, unsigned int Size)
 
 void Check_data(unsigned char * Data_1, unsigned char * Data_2)
 {
-	for (int Y = 0; Y < OUTPUT_FRAME_HEIGHT; Y++)
-		for (int X = 0; X < OUTPUT_FRAME_WIDTH; X++)
-		{
-			Check_error(Data_1[Y * OUTPUT_FRAME_WIDTH + X] != Data_2[Y * OUTPUT_FRAME_WIDTH + X], "Output is not the same!\n");
-		}
+	for (int i = 0; i < FRAMES * INPUT_FRAME_SIZE; i++)
+		Check_error(Data_1[i] != Data_2[i], "Output is not the same!\n");
 }
 
 
@@ -125,18 +122,10 @@ int main()
   unsigned char * Temp_data[STAGES - 1];
   unsigned char * Output_data = Allocate(MAX_OUTPUT_SIZE);
 
-/*
- * HW
- */
-
-  unsigned char * Output_data_HW = Allocate(MAX_OUTPUT_SIZE);
-
-/*
- * HW
- */
-
   for (int Stage = 0; Stage < STAGES - 1; Stage++)
     Temp_data[Stage] = Allocate(FRAMES * INPUT_FRAME_SIZE);
+
+
 
 #ifdef __SDSCC__
   FATFS FS;
@@ -150,11 +139,11 @@ int main()
   unsigned long long Start = sds_clock_counter();
 #endif
 
-  int Size = 0;
+  int Size = 0, Size_HW = 0;
 
 /*
  * SW
- *
+ */
 
   for (int Frame = 0; Frame < FRAMES; Frame++)
   {
@@ -181,9 +170,9 @@ int main()
   for (int Frame = 0; Frame < FRAMES; Frame++)
   {
     Scale_SW(Input_data + Frame * INPUT_FRAME_SIZE, Temp_data[0]);
-    Filter_SW(Temp_data[0], Temp_data[1]);
-    Differentiate_HW(Temp_data[1], Temp_data[2]);
-    Size = Compress_SW(Temp_data[2], Output_data_HW);
+    Filter_SW(Temp_data[0], Temp_data[3]);
+    Differentiate_HW(Temp_data[3], Temp_data[2]);
+    Size = Compress_SW(Temp_data[2], Output_data);
   }
 
 #ifdef __SDSCC__
@@ -195,21 +184,23 @@ int main()
  * HW
  * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
  * Check difference between Output_data and Output_data_HW
- *
+ */
 
-  Check_data(Output_data, Output_data_HW);
+  Check_data(Temp_data[1], Temp_data[3]);
 
 /*
  * Check
  */
 
-  Store_data("D:/ESE532/Vivado_HLS/HW7/Output.bin", Output_data_HW, Size);
+  Store_data("D:/ESE532/Vivado_HLS/HW7/Output.bin", Output_data, Size);
 
   Free(Input_data);
   Free(Output_data);
-  Free(Output_data_HW);
+
   for (int i = 0; i < STAGES - 1; i++)
+  {
 	Free(Temp_data[i]);
+  }
 
   puts("Application completed successfully.");
 
